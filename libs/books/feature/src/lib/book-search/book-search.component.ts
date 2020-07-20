@@ -54,9 +54,14 @@ export class BookSearchComponent implements OnInit {
 
   searchBooks() {
     if (this.searchForm.value.term) {
-      this.store.dispatch(searchBooks({ term: this.searchTerm }));
+      //Added the length of the the searchTerm 
+      if (this.searchTerm.length >= 3)
+        this.store.dispatch(searchBooks({ term: this.searchTerm }));
     } else {
       this.store.dispatch(clearSearch());
     }
   }
 }
+
+
+
